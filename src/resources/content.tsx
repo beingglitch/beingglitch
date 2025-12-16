@@ -5,17 +5,17 @@ const person: Person = {
   firstName: "Suraj",
   lastName: "Shukla",
   name: `Suraj Shukla`,
-  role: "Founder & CTO",
+  role: "Robotics Engineer & Full Stack Developer",
   avatar: "/images/avatar.jpg",
   email: "surajshukla5604@gmail.com",
-  location: "Asia/Kolkata",
+  location: "Asia/Kolkata", // Timezone
   languages: ["English", "Hindi"],
 };
 
 const newsletter: Newsletter = {
   display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly insights on defense robotics and engineering.</>,
+  description: <>My weekly insights on autonomous systems and engineering.</>,
 };
 
 const social: Social = [
@@ -50,24 +50,24 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as ${person.role}`,
-  headline: <>Engineering the future of <br/> autonomous defense</>,
+  description: `Portfolio website showcasing my work as a ${person.role}`,
+  headline: <>Building intelligent <br/> autonomous systems</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Bramer Pvt Ltd</strong>{" "}
+        <strong className="ml-4">Latest Work</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Current Focus
+          Robotics & Web
         </Text>
       </Row>
     ),
-    href: "https://bramer.in", // Assuming a placeholder or your specific project link
+    href: "/work",
   },
   subline: (
     <>
-      I'm Suraj Shukla, Founder & CTO at <Text as="span" size="xl" weight="strong">Bramer Private Limited</Text>, where I architect <br /> hybrid drone systems and software ecosystems.
+      I'm Suraj Shukla, a robotics engineer bridging the gap between <br /> hardware engineering and advanced software architectures.
     </>
   ),
 };
@@ -85,7 +85,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true, // Set to false if you don't use Cal.com
+    display: true,
     link: "https://cal.com",
   },
   intro: {
@@ -93,10 +93,9 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Suraj is a Delhi-based robotics engineer and entrepreneur with a deep focus on 
-        Autonomous Systems, SLAM, and Hybrid Propulsion. As the CTO of a defense startup, 
-        he bridges the gap between hardware engineering (IC engines, Jetson Orin) and 
-        advanced software architectures.
+        Suraj is a robotics engineer with a deep focus on Autonomous Systems, 
+        SLAM, and Hybrid Propulsion. He specializes in integrating complex 
+        hardware (IC engines, Edge AI) with robust full-stack software solutions.
       </>
     ),
   },
@@ -105,31 +104,29 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "Bramer Private Limited",
+        company: "Stealth Startup",
         timeframe: "2023 - Present",
-        role: "Founder & CTO",
+        role: "Lead Robotics Engineer",
         achievements: [
           <>
-            Leading an iDEX (Innovations for Defence Excellence) project focused on hybrid-powered autonomous robotics.
+            Leading R&D projects focused on hybrid-powered autonomous robotics and navigation systems.
           </>,
           <>
-            Architecting the company's core software stack including 'Console' (Next.js/Tauri), 'Link' (FastAPI), 'Fabric' (ML), and 'Automate' (ROS 2).
+            Architecting a comprehensive software ecosystem including control interfaces, backend infrastructure, and ML pipelines.
           </>,
           <>
-            Developing autonomous navigation systems using Visual SLAM (ORB-SLAM) on NVIDIA Jetson Orin Nano and AGX platforms.
+            Developing autonomous behaviors using Visual SLAM and Computer Vision on Edge AI platforms.
           </>,
         ],
         images: [
-          // Add actual screenshots of your Console or Drone prototypes here
           {
             src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Bramer Console UI",
+            alt: "System Architecture",
             width: 16,
             height: 9,
           },
         ],
       },
-      // You can add your internship period here if you wish to display it
     ],
   },
   studies: {
@@ -149,12 +146,12 @@ const about: About = {
       {
         title: "Robotics & AI",
         description: (
-          <>Developing autonomous behaviors with ROS 2, ORB-SLAM, and Computer Vision on Edge AI hardware.</>
+          <>Experience with autonomous navigation, SLAM, and Edge AI.</>
         ),
         tags: [
           {
             name: "ROS 2",
-            icon: "ros", // Ensure you have a ROS icon or use a generic terminal icon
+            icon: "ros",
           },
           {
             name: "C++",
@@ -172,16 +169,16 @@ const about: About = {
         images: [
           {
             src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Drone Prototype",
+            alt: "Robotics Prototype",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Full Stack Engineering",
+        title: "Full Stack Development",
         description: (
-          <>Building robust control interfaces with Next.js, Tauri, and FastAPI.</>
+          <>Building performant web applications and control interfaces.</>
         ),
         tags: [
           {
@@ -189,22 +186,22 @@ const about: About = {
             icon: "nextjs",
           },
           {
-            name: "Tailwind",
-            icon: "tailwind",
-          },
-          {
-            name: "Tauri",
-            icon: "app", // Generic app icon if tauri not available
+            name: "React",
+            icon: "react",
           },
           {
             name: "FastAPI",
             icon: "python", 
           },
+          {
+            name: "Docker",
+            icon: "docker",
+          },
         ],
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Console Dashboard",
+            alt: "Web Interface",
             width: 16,
             height: 9,
           },
@@ -225,14 +222,14 @@ const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Robotics and Software projects by ${person.name}`,
+  description: `Engineering projects by ${person.name}`,
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
-  description: `A glimpse into my life and prototypes`,
+  description: `A collection of my prototypes and travels`,
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
