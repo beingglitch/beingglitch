@@ -2,48 +2,39 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Suraj",
+  lastName: "Shukla",
+  name: `Suraj Shukla`,
+  role: "Founder & CTO",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "surajshukla5604@gmail.com",
+  location: "Asia/Kolkata",
+  languages: ["English", "Hindi"],
 };
 
 const newsletter: Newsletter = {
   display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>My weekly insights on defense robotics and engineering.</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/beingglitch",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/surjshuk/",
     essential: true,
   },
   {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    name: "X",
+    icon: "x",
+    link: "https://x.com/beingglitch",
     essential: true,
   },
   {
@@ -59,25 +50,25 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  description: `Portfolio website showcasing my work as ${person.role}`,
+  headline: <>Engineering the future of <br/> autonomous defense</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Bramer Pvt Ltd</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Current Focus
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "https://bramer.in", // Assuming a placeholder or your specific project link
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
-</>
+      I'm Suraj Shukla, Founder & CTO at <Text as="span" size="xl" weight="strong">Bramer Private Limited</Text>, where I architect <br /> hybrid drone systems and software ecosystems.
+    </>
   ),
 };
 
@@ -94,7 +85,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: true, // Set to false if you don't use Cal.com
     link: "https://cal.com",
   },
   intro: {
@@ -102,127 +93,118 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Suraj is a Delhi-based robotics engineer and entrepreneur with a deep focus on 
+        Autonomous Systems, SLAM, and Hybrid Propulsion. As the CTO of a defense startup, 
+        he bridges the gap between hardware engineering (IC engines, Jetson Orin) and 
+        advanced software architectures.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Bramer Private Limited",
+        timeframe: "2023 - Present",
+        role: "Founder & CTO",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Leading an iDEX (Innovations for Defence Excellence) project focused on hybrid-powered autonomous robotics.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Architecting the company's core software stack including 'Console' (Next.js/Tauri), 'Link' (FastAPI), 'Fabric' (ML), and 'Automate' (ROS 2).
+          </>,
+          <>
+            Developing autonomous navigation systems using Visual SLAM (ORB-SLAM) on NVIDIA Jetson Orin Nano and AGX platforms.
           </>,
         ],
         images: [
-          // optional: leave the array empty if you don't want to display images
+          // Add actual screenshots of your Console or Drone prototypes here
           {
             src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            alt: "Bramer Console UI",
             width: 16,
             height: 9,
           },
         ],
       },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
-        ],
-        images: [],
-      },
+      // You can add your internship period here if you wish to display it
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Delhi Technological University",
+        description: <>B.Tech in Computer Science.</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "Robotics & AI",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Developing autonomous behaviors with ROS 2, ORB-SLAM, and Computer Vision on Edge AI hardware.</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
+            name: "ROS 2",
+            icon: "ros", // Ensure you have a ROS icon or use a generic terminal icon
           },
+          {
+            name: "C++",
+            icon: "cplusplus",
+          },
+          {
+            name: "Python",
+            icon: "python",
+          },
+          {
+            name: "OpenCV",
+            icon: "opencv",
+          }
         ],
-        // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
+            alt: "Drone Prototype",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Next.js",
+        title: "Full Stack Engineering",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Building robust control interfaces with Next.js, Tauri, and FastAPI.</>
         ),
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
           {
             name: "Next.js",
             icon: "nextjs",
           },
           {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Tailwind",
+            icon: "tailwind",
+          },
+          {
+            name: "Tauri",
+            icon: "app", // Generic app icon if tauri not available
+          },
+          {
+            name: "FastAPI",
+            icon: "python", 
           },
         ],
-        // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
+            alt: "Console Dashboard",
             width: 16,
             height: 9,
           },
@@ -235,28 +217,22 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Engineering Journal",
+  description: `Read what ${person.name} has been working on`,
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Robotics and Software projects by ${person.name}`,
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  description: `A glimpse into my life and prototypes`,
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
