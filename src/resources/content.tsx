@@ -71,8 +71,8 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Suraj Shukla, a robotics engineer bridging the gap between <br /> hardware engineering and
-      advanced software architectures.
+      I'm Suraj Shukla, a full stack and backend engineer. I build the layers <br /> most people
+      import, mostly in Rust, Go, and TypeScript.
     </>
   ),
 };
@@ -100,7 +100,7 @@ const about: About = {
       <>
         Suraj is a robotics engineer with a deep focus on Autonomous Systems, SLAM, and Hybrid
         Propulsion. He specializes in integrating complex hardware (IC engines, Edge AI) with robust
-        full-stack software — most recently fabricOS, a multi-robot ground control and sensor
+        full-stack software. Most recently fabricOS, a multi-robot ground control and sensor
         analytics platform whose Rust core drives cloud, desktop, and mobile from a single codebase.
       </>
     ),
@@ -144,7 +144,7 @@ const about: About = {
         role: "Systems & Full Stack Engineer",
         achievements: [
           <>
-            Vivy — a personal AI assistant ecosystem built on a single event spine (Next.js, Neon
+            Vivy, a personal AI assistant ecosystem built on a single event spine (Next.js, Neon
             Postgres, Claude) fed by browser, screen-time, finance, and audio ingestors.
           </>,
           <>
@@ -152,7 +152,7 @@ const about: About = {
             Lookup (recursive DNS resolver), and Quark (a real-time graphics and physics engine).
           </>,
           <>
-            Hermes — a low-latency algorithmic trading engine for real-time market analysis and
+            Hermes, a low-latency algorithmic trading engine for real-time market analysis and
             execution.
           </>,
         ],
@@ -242,7 +242,7 @@ const about: About = {
         title: "Systems Programming",
         description: (
           <>
-            Rust for the parts that have to be fast and correct — protocol layers, cryptography,
+            Rust for the parts that have to be fast and correct: protocol layers, cryptography,
             networking, and cross-platform binaries.
           </>
         ),

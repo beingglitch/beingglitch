@@ -2,7 +2,7 @@
 title: "fabricOS"
 subtitle: "Multi-robot ground control & sensor analytics"
 publishedAt: "2026-07-27"
-summary: "A hybrid Rust/TypeScript/Python platform for commanding fleets of autonomous vehicles — one Hub library powering cloud, desktop, and mobile runtimes."
+summary: "A hybrid Rust/TypeScript/Python platform for commanding fleets of autonomous vehicles, with one Hub library powering cloud, desktop, and mobile runtimes."
 tag: "Robotics"
 link: "https://app.bramer.in"
 ---
@@ -11,8 +11,8 @@ link: "https://app.bramer.in"
 
 fabricOS is a multi-robot ground control and sensor analytics platform. The core insight is
 architectural: the Hub ships as a **library** (`hub-core`) rather than an application, so a single
-codebase drives three runtimes — a headless cloud binary, a Tauri desktop app, and Tauri mobile —
-selected at build time through Cargo features.
+codebase drives three runtimes: a headless cloud binary, a Tauri desktop app, and Tauri mobile,
+each selected at build time through Cargo features.
 
 ## Key Features
 
@@ -24,11 +24,11 @@ selected at build time through Cargo features.
 
 ## Technologies Used
 
-- **Rust** — protocol, hub core, MAVLink link, SITL manager
-- **TypeScript / React** — web, desktop, and mobile frontends
-- **Tauri** — desktop and mobile shells over the shared Rust core
-- **Python** — analytics and tooling
-- **Cargo + pnpm monorepo** — one workspace, many targets
+- **Rust**: protocol, hub core, MAVLink link, SITL manager
+- **TypeScript / React**: web, desktop, and mobile frontends
+- **Tauri**: desktop and mobile shells over the shared Rust core
+- **Python**: analytics and tooling
+- **Cargo + pnpm monorepo**: one workspace, many targets
 
 ## Outcome
 

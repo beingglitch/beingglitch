@@ -12,6 +12,7 @@ export {
 
 export {
   display,
+  resume,
   mailchimp,
   routes,
   protectedRoutes,

@@ -5,6 +5,7 @@ import {
   FontsConfig,
   MailchimpConfig,
   ProtectedRoutesConfig,
+  ResumeConfig,
   RoutesConfig,
   SameAsConfig,
   SchemaConfig,
@@ -21,7 +22,15 @@ const routes: RoutesConfig = {
   "/about": true,
   "/work": true,
   "/blog": true,
-  "/gallery": true,
+  // Gallery is kept in the codebase but hidden from the site.
+  "/gallery": false,
+};
+
+// Resume link in the header. The PDF lives in /public, so /resume.pdf serves public/resume.pdf.
+const resume: ResumeConfig = {
+  display: true,
+  label: "Resume",
+  path: "/resume.pdf",
 };
 
 const display: DisplayConfig = {
@@ -216,6 +225,7 @@ const socialSharing: SocialSharingConfig = {
 
 export {
   display,
+  resume,
   mailchimp,
   routes,
   protectedRoutes,

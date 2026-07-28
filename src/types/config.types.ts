@@ -23,6 +23,16 @@ export type DisplayConfig = {
 };
 
 /**
+ * Resume link shown in the header.
+ * @description `path` is served from the public directory and opens in a new tab.
+ */
+export type ResumeConfig = {
+  display: boolean;
+  label: string;
+  path: string;
+};
+
+/**
  * Route configuration for enabled/disabled routes.
  */
 export type RoutesConfig = Record<`/${string}`, boolean>;
@@ -170,6 +180,7 @@ export type SocialSharingConfig = {
  */
 export type OnceUIConfig = {
   display: DisplayConfig;
+  resume: ResumeConfig;
   mailchimp: MailchimpConfig;
   routes: RoutesConfig;
   protectedRoutes: ProtectedRoutesConfig;

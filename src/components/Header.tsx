@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, resume, person, about, blog, work, gallery } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -165,6 +165,23 @@ export const Header = () => {
                     />
                   </Row>
                 </>
+              )}
+              {resume.display && (
+                // Anchor rather than ToggleButton's href: the PDF is a static file, so it must
+                // open natively in a new tab instead of going through the client router.
+                <a
+                  href={resume.path}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-decoration-none"
+                >
+                  <Row s={{ hide: true }}>
+                    <ToggleButton prefixIcon="document" label={resume.label} selected={false} />
+                  </Row>
+                  <Row hide s={{ hide: false }}>
+                    <ToggleButton prefixIcon="document" selected={false} />
+                  </Row>
+                </a>
               )}
               {display.themeSwitcher && (
                 <>

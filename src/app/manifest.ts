@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${person.name} — ${person.role}`,
+    name: `${person.name}, ${person.role}`,
     short_name: person.firstName,
     description: `Portfolio of ${person.name}, ${person.role}`,
     start_url: "/",
