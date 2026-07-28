@@ -1,0 +1,34 @@
+---
+title: "Vivy"
+subtitle: "A personal AI assistant ecosystem"
+publishedAt: "2026-07-26"
+summary: "One spine — Event API, Postgres, and Claude — fed by many ingestors, producing an assistant that actually knows my life and tells me what to do today."
+tag: "AI"
+---
+
+## Overview
+
+Vivy is my Jarvis. Rather than another chat wrapper, it is built as a single event spine with many
+ingestors feeding it: a browser extension, a screen-time agent, a finance importer, and an audio
+recorder that transcribes through Whisper. Everything lands as events in one timeline.
+
+## Key Features
+
+- **Event API + Postgres**: a single append-only timeline of everything — videos watched, screen time, expenses, transcripts, notes.
+- **AI layer on Claude**: extracts tasks from transcripts, categorizes expenses, summarizes meetings and videos, and maintains long-term memory.
+- **Daily briefing**: the assistant's job is not to answer questions but to open the day with "do these three things."
+- **Multiple interfaces**: web dashboard, conversational chat over the full dataset, and proactive alerts.
+- **Hardware ingestion**: a mic recorder feeding Whisper transcription into the same pipeline as everything else.
+
+## Technologies Used
+
+- **Next.js (App Router)** + TypeScript, deployed on Vercel
+- **Neon Postgres** with Drizzle ORM
+- **Claude** for extraction, summarization, and memory
+- **Whisper** for on-device transcription
+
+## Challenges and Learnings
+
+The hard part was resisting feature sprawl and committing to one schema for events. Once every
+ingestor spoke the same shape, adding a new data source became a weekend's work rather than a
+refactor.

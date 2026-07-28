@@ -32,6 +32,7 @@ export function Projects({ range, exclude }: ProjectsProps) {
           href={`/work/${post.slug}`}
           images={post.metadata.images}
           title={post.metadata.title}
+          subtitle={post.metadata.subtitle}
           description={post.metadata.summary}
           content={post.content}
           avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}

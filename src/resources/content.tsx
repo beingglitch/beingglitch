@@ -5,7 +5,7 @@ const person: Person = {
   firstName: "Suraj",
   lastName: "Shukla",
   name: `Suraj Shukla`,
-  role: "Robotics Engineer & Full Stack Developer",
+  role: "Full Stack & Robotics Engineer",
   avatar: "/images/avatar.jpg",
   email: "surajshukla5604@gmail.com",
   location: "Asia/Kolkata", // Timezone
@@ -51,23 +51,28 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building intelligent <br/> autonomous systems</>,
+  headline: (
+    <>
+      Building intelligent <br /> autonomous systems
+    </>
+  ),
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Latest Work</strong>{" "}
+        <strong className="ml-4">fabricOS</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Robotics & Web
+          Multi-robot ground control
         </Text>
       </Row>
     ),
-    href: "/work",
+    href: "/work/fabricos",
   },
   subline: (
     <>
-      I'm Suraj Shukla, a robotics engineer bridging the gap between <br /> hardware engineering and advanced software architectures.
+      I'm Suraj Shukla, a robotics engineer bridging the gap between <br /> hardware engineering and
+      advanced software architectures.
     </>
   ),
 };
@@ -93,9 +98,10 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Suraj is a robotics engineer with a deep focus on Autonomous Systems, 
-        SLAM, and Hybrid Propulsion. He specializes in integrating complex 
-        hardware (IC engines, Edge AI) with robust full-stack software solutions.
+        Suraj is a robotics engineer with a deep focus on Autonomous Systems, SLAM, and Hybrid
+        Propulsion. He specializes in integrating complex hardware (IC engines, Edge AI) with robust
+        full-stack software — most recently fabricOS, a multi-robot ground control and sensor
+        analytics platform whose Rust core drives cloud, desktop, and mobile from a single codebase.
       </>
     ),
   },
@@ -108,14 +114,19 @@ const about: About = {
         timeframe: "2023 - Present",
         role: "Lead Robotics Engineer",
         achievements: [
+          <>Leading R&D on hybrid-powered autonomous robotics and navigation systems.</>,
           <>
-            Leading R&D projects focused on hybrid-powered autonomous robotics and navigation systems.
+            Architected fabricOS, a multi-robot ground control and sensor analytics platform whose
+            Rust core ships as a library powering cloud, Tauri desktop, and mobile runtimes from one
+            codebase.
           </>,
           <>
-            Architecting a comprehensive software ecosystem including control interfaces, backend infrastructure, and ML pipelines.
+            Built the MAVLink telemetry pipeline and an in-app SITL harness, making the full stack
+            testable end to end without hardware.
           </>,
           <>
-            Developing autonomous behaviors using Visual SLAM and Computer Vision on Edge AI platforms.
+            Developing autonomous behaviours using Visual SLAM and computer vision on Edge AI
+            platforms.
           </>,
         ],
         images: [
@@ -126,6 +137,26 @@ const about: About = {
             height: 9,
           },
         ],
+      },
+      {
+        company: "Independent / Open Source",
+        timeframe: "2025 - Present",
+        role: "Systems & Full Stack Engineer",
+        achievements: [
+          <>
+            Vivy — a personal AI assistant ecosystem built on a single event spine (Next.js, Neon
+            Postgres, Claude) fed by browser, screen-time, finance, and audio ingestors.
+          </>,
+          <>
+            A run of Rust systems tools: Whisper (peer-to-peer env sync), Oxide (file encryption),
+            Lookup (recursive DNS resolver), and Quark (a real-time graphics and physics engine).
+          </>,
+          <>
+            Hermes — a low-latency algorithmic trading engine for real-time market analysis and
+            execution.
+          </>,
+        ],
+        images: [],
       },
     ],
   },
@@ -146,7 +177,9 @@ const about: About = {
       {
         title: "Robotics & AI",
         description: (
-          <>Experience with autonomous navigation, SLAM, and Edge AI.</>
+          <>
+            Autonomous navigation, Visual SLAM, and MAVLink-based fleet control on Edge AI hardware.
+          </>
         ),
         tags: [
           {
@@ -164,7 +197,7 @@ const about: About = {
           {
             name: "OpenCV",
             icon: "opencv",
-          }
+          },
         ],
         images: [
           {
@@ -177,9 +210,7 @@ const about: About = {
       },
       {
         title: "Full Stack Development",
-        description: (
-          <>Building performant web applications and control interfaces.</>
-        ),
+        description: <>Building performant web applications and control interfaces.</>,
         tags: [
           {
             name: "Next.js",
@@ -191,7 +222,7 @@ const about: About = {
           },
           {
             name: "FastAPI",
-            icon: "python", 
+            icon: "python",
           },
           {
             name: "Docker",
@@ -206,6 +237,17 @@ const about: About = {
             height: 9,
           },
         ],
+      },
+      {
+        title: "Systems Programming",
+        description: (
+          <>
+            Rust for the parts that have to be fast and correct — protocol layers, cryptography,
+            networking, and cross-platform binaries.
+          </>
+        ),
+        tags: [{ name: "Rust" }, { name: "Tauri" }, { name: "Tokio" }, { name: "WebAssembly" }],
+        images: [],
       },
     ],
   },

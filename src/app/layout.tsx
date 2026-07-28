@@ -4,26 +4,44 @@ import "@/resources/custom.css";
 
 import classNames from "classnames";
 
+import { Footer, Header, Providers, RouteGuard, ServiceWorkerRegistration } from "@/components";
+import { baseURL, dataStyle, effects, fonts, home, style } from "@/resources";
 import {
   Background,
   Column,
   Flex,
   Meta,
-  opacity,
   RevealFx,
-  SpacingToken,
+  type SpacingToken,
+  type opacity,
 } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
-import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
+import type { Viewport } from "next";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e0e11" },
+  ],
+};
 
 export async function generateMetadata() {
-  return Meta.generate({
+  const meta = await Meta.generate({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
     path: home.path,
     image: home.image,
   });
+
+  return {
+    ...meta,
+    // Lets iOS launch the site fullscreen from the home screen.
+    appleWebApp: {
+      capable: true,
+      title: home.title,
+      statusBarStyle: "black-translucent" as const,
+    },
+  };
 }
 
 export default async function RootLayout({
@@ -164,6 +182,7 @@ export default async function RootLayout({
           </Flex>
           <Footer />
         </Column>
+        <ServiceWorkerRegistration />
       </Providers>
     </Flex>
   );
