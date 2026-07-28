@@ -3,11 +3,10 @@
   "version": "2.3.0",
   "scripts": {
     "dev": "next dev",
-    "export": "next export",
     "build": "next build",
     "biome-write": "npx @biomejs/biome format --write .",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "npx @biomejs/biome check ."
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -31,7 +30,6 @@
     "@types/node": "^20.17.30",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.5",
-    "eslint": "^9.25.0",
     "typescript": "^5.8.3",
     "tzdata": "^1.0.44"
   }

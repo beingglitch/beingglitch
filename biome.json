@@ -6,7 +6,8 @@
     "useIgnoreFile": false
   },
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "ignore": [".next", "node_modules", "out", "public", "*.min.js"]
   },
   "formatter": {
     "enabled": true,
