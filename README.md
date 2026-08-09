@@ -45,5 +45,7 @@ secrets sync. Currently working on **fabricOS**.
 | **physora** | Physics simulation & interactive visualization | TypeScript |
 | [**augury**](https://github.com/beingglitch/augury) | RAG-backed analytics & prediction service with agentic workflows | Python · FastAPI · LangGraph · LangChain · RAG |
 | **bullseye** | Multiplayer target practice in the browser, driven by an RC transmitter | TypeScript · WebRTC |
+| **Caramel** | An Intelligent web extension that can develop and add features based on user demand directly in browser apps or sites | TypeScript |
+
 
 [surajshukla.vercel.app](https://surajshukla.vercel.app) · [LinkedIn](https://www.linkedin.com/in/surjshuk/) · [X](https://x.com/beingglitch) · [Email](mailto:surajshukla5604@gmail.com)
