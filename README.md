@@ -1,4 +1,4 @@
-# Suraj Shukla
+# Suraj Shukla | Open for Work
 
 **Full Stack · Distributed Systems · Robotics** · Delhi, India
 
