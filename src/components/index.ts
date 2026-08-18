@@ -9,3 +9,4 @@ export { ScrollToHash } from "@/components/ScrollToHash";
 export { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration";
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
+export { TextWithBreaks } from "@/components/TextWithBreaks";

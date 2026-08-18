@@ -78,6 +78,7 @@ export default async function AdminPage() {
         <SmartLink href="/admin/gallery">Manage gallery</SmartLink>
         <SmartLink href="/admin/flags">Feature flags</SmartLink>
         <SmartLink href="/admin/featured">Home badge</SmartLink>
+        <SmartLink href="/admin/copy">Site copy</SmartLink>
       </Row>
     </Column>
   );

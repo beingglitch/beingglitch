@@ -12,11 +12,12 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL } from "@/resources";
-import { Mailchimp } from "@/components";
+import { Mailchimp, TextWithBreaks } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { getHomeFeatured } from "@/utils/home-featured";
 import { getRoutes } from "@/utils/flags";
+import { getSiteCopy } from "@/utils/site-copy";
 
 // The featured badge and project list are DB-backed and admin-editable — must
 // render fresh per request so edits show up immediately, not just after a redeploy.
@@ -33,7 +34,11 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const [featured, routes] = await Promise.all([getHomeFeatured(), getRoutes()]);
+  const [featured, routes, copy] = await Promise.all([
+    getHomeFeatured(),
+    getRoutes(),
+    getSiteCopy(),
+  ]);
 
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
@@ -85,12 +90,12 @@ export default async function Home() {
           )}
           <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
             <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
+              <TextWithBreaks text={copy.homeHeadline} />
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="32">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
+              <TextWithBreaks text={copy.homeSubline} />
             </Text>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">

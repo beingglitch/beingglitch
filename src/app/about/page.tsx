@@ -16,6 +16,12 @@ import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
+import { TextWithBreaks } from "@/components";
+import { getSiteCopy } from "@/utils/site-copy";
+
+// The intro paragraph is DB-backed and admin-editable — must render fresh per
+// request so edits show up immediately, not just after a redeploy.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -30,7 +36,8 @@ export async function generateMetadata() {
 // Hides experience/skill images on the About page without dropping the data from content.tsx.
 const SHOW_ABOUT_IMAGES = false;
 
-export default function About() {
+export default async function About() {
+  const copy = await getSiteCopy();
   const structure = [
     {
       title: about.intro.title,
@@ -201,7 +208,7 @@ export default function About() {
 
           {about.intro.display && (
             <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
+              <TextWithBreaks text={copy.aboutIntro} />
             </Column>
           )}
 

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, resume, person, about, blog, work, gallery, social } from "@/resources";
+import { display, resume, person, about, blog, work, gallery, social } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -42,7 +42,7 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
 
 export default TimeDisplay;
 
-export const Header = () => {
+export const Header = ({ routes }: { routes: Record<string, boolean> }) => {
   const pathname = usePathname() ?? "";
   const github = social.find((item) => item.name === "GitHub");
 

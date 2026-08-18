@@ -1,7 +1,4 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { getYearsOfExperience } from "@/utils/experience";
-
-const yearsOfExperience = getYearsOfExperience(2022);
 
 const person: Person = {
   firstName: "Suraj",
@@ -53,25 +50,15 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: (
-    <>
-      The layers <br /> underneath
-    </>
-  ),
-  // The badge itself is managed from /admin/featured and stored in the database
-  // now — this stays as the Home type's required fallback.
+  // Headline and subline are managed from /admin/featured and stored in the
+  // database now — these stay as the Home type's required fallback.
+  headline: <></>,
   featured: {
     display: false,
     title: <></>,
     href: "",
   },
-  subline: (
-    <>
-      I'm Suraj Shukla, a full stack engineer working across distributed systems and robotics.{" "}
-      <br /> {yearsOfExperience}+ years building the parts most people just import, in Rust, Go,
-      and TypeScript.
-    </>
-  ),
+  subline: <></>,
 };
 
 const about: About = {
@@ -90,20 +77,12 @@ const about: About = {
     display: true,
     link: "https://cal.com",
   },
+  // description is managed from /admin/featured and stored in the database now
+  // — this stays as the About type's required fallback.
   intro: {
     display: true,
     title: "Introduction",
-    description: (
-      <>
-        Suraj is a full-stack and robotics engineer, {yearsOfExperience}+ years across distributed
-        systems and autonomous hardware. As co-founder and CTO of Bramer, he led a cross-functional
-        team of six
-        across software, AI, electronics, and hardware on a $300K (₹3 crore) R&D program, building
-        the company's founding stack: a cross-platform ground control station, an event-driven
-        backend, and edge ML inference on embedded NVIDIA Jetson hardware. That stack ships today as
-        fabricOS.
-      </>
-    ),
+    description: <></>,
   },
   work: {
     display: true,

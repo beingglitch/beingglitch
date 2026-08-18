@@ -67,3 +67,14 @@ export const homeFeatured = pgTable("home_featured", {
   href: text("href"), // empty/null renders the badge as plain text, not a link
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+// Singleton row (id is always 1) for editable prose blocks. Newlines in the text
+// fields become <br/>. `homeSubline` may contain a literal "{years}" placeholder,
+// substituted with the computed years-of-experience at render time.
+export const siteCopy = pgTable("site_copy", {
+  id: integer("id").primaryKey().default(1),
+  homeHeadline: text("home_headline").notNull().default(""),
+  homeSubline: text("home_subline").notNull().default(""),
+  aboutIntro: text("about_intro").notNull().default(""),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
