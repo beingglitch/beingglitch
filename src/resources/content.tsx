@@ -1,5 +1,7 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
+import { getYearsOfExperience } from "@/utils/experience";
+
+const yearsOfExperience = getYearsOfExperience(2022);
 
 const person: Person = {
   firstName: "Suraj",
@@ -15,7 +17,7 @@ const person: Person = {
 const newsletter: Newsletter = {
   display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly insights on autonomous systems and engineering.</>,
+  description: <>My weekly insights on autonomous and distributed systems engineering.</>,
 };
 
 const social: Social = [
@@ -47,32 +49,27 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/og/home.png",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: (
     <>
-      Building intelligent <br /> autonomous systems
+      The layers <br /> underneath
     </>
   ),
+  // The badge itself is managed from /admin/featured and stored in the database
+  // now — this stays as the Home type's required fallback.
   featured: {
-    display: true,
-    title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">fabricOS</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          Multi-robot ground control
-        </Text>
-      </Row>
-    ),
-    href: "/work/fabricos",
+    display: false,
+    title: <></>,
+    href: "",
   },
   subline: (
     <>
-      I'm Suraj Shukla, a full stack and backend engineer. I build the layers <br /> most people
-      import, mostly in Rust, Go, and TypeScript.
+      I'm Suraj Shukla, a full stack engineer working across distributed systems and robotics.{" "}
+      <br /> {yearsOfExperience}+ years building the parts most people just import, in Rust, Go,
+      and TypeScript.
     </>
   ),
 };
@@ -98,10 +95,13 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Suraj is a robotics engineer with a deep focus on Autonomous Systems, SLAM, and Hybrid
-        Propulsion. He specializes in integrating complex hardware (IC engines, Edge AI) with robust
-        full-stack software. Most recently fabricOS, a multi-robot ground control and sensor
-        analytics platform whose Rust core drives cloud, desktop, and mobile from a single codebase.
+        Suraj is a full-stack and robotics engineer, {yearsOfExperience}+ years across distributed
+        systems and autonomous hardware. As co-founder and CTO of Bramer, he led a cross-functional
+        team of six
+        across software, AI, electronics, and hardware on a $300K (₹3 crore) R&D program, building
+        the company's founding stack: a cross-platform ground control station, an event-driven
+        backend, and edge ML inference on embedded NVIDIA Jetson hardware. That stack ships today as
+        fabricOS.
       </>
     ),
   },
@@ -110,23 +110,35 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "Stealth Startup",
-        timeframe: "2023 - Present",
-        role: "Lead Robotics Engineer",
+        company: "Divergent Classes",
+        timeframe: "Dates TBD",
+        role: "Software Engineer",
         achievements: [
-          <>Leading R&D on hybrid-powered autonomous robotics and navigation systems.</>,
           <>
-            Architected fabricOS, a multi-robot ground control and sensor analytics platform whose
-            Rust core ships as a library powering cloud, Tauri desktop, and mobile runtimes from one
-            codebase.
+            Created an agentic ad-management application to automate Divergent Classes' marketing
+            campaigns.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Bramer Private Limited",
+        timeframe: "Dates TBD",
+        role: "Co-founder & CTO",
+        achievements: [
+          <>
+            Led a cross-functional team of 6 across software, AI, electronics, and hardware on a
+            $300K (₹3 crore) R&D program.
           </>,
           <>
-            Built the MAVLink telemetry pipeline and an in-app SITL harness, making the full stack
-            testable end to end without hardware.
+            Built the founding product stack: a cross-platform ground control station, an
+            event-driven backend, and edge ML inference on embedded NVIDIA Jetson hardware.
           </>,
           <>
-            Developing autonomous behaviours using Visual SLAM and computer vision on Edge AI
-            platforms.
+            Built a three-phase geospatial pipeline for a border infrastructure organization:
+            pre-phase site planning from historical and satellite data, drone-collected field surveys
+            during execution, and post-phase fusion into a predictive road-construction
+            susceptibility model.
           </>,
         ],
         images: [
@@ -139,21 +151,39 @@ const about: About = {
         ],
       },
       {
-        company: "Independent / Open Source",
-        timeframe: "2025 - Present",
-        role: "Systems & Full Stack Engineer",
+        company: "I-Hub Foundation for Cobotics (IHFC), IIT Delhi",
+        timeframe: "Dates TBD",
+        role: "Research Fellow",
         achievements: [
           <>
-            Vivy, a personal AI assistant ecosystem built on a single event spine (Next.js, Neon
-            Postgres, Claude) fed by browser, screen-time, finance, and audio ingestors.
+            Selected for a competitive fellowship in collaborative robotics at IHFC, a Department of
+            Science and Technology Innovation Hub at IIT Delhi, to build a swarm-coordination system
+            for multi-agent robotics.
           </>,
+        ],
+        images: [],
+      },
+      {
+        company: "DTU IoT Research Lab",
+        timeframe: "Dates TBD",
+        role: "Head of Development",
+        achievements: [
           <>
-            A run of Rust systems tools: Whisper (peer-to-peer env sync), Oxide (file encryption),
-            Lookup (recursive DNS resolver), and Quark (a real-time graphics and physics engine).
+            Leading a team of student developers across research and development projects in
+            computer vision, signal processing, software-defined networks (SDN), and robotics
+            applications.
           </>,
+        ],
+        images: [],
+      },
+      {
+        company: "DTU Unmanned Aerial Systems (UAS) Team",
+        timeframe: "Dates TBD",
+        role: "Software & Autonomy Lead",
+        achievements: [
           <>
-            Hermes, a low-latency algorithmic trading engine for real-time market analysis and
-            execution.
+            Led the software and autonomy sub-team; developed a swarm-coordination framework for
+            drones with GPS-denied visual navigation and an action pipeline on ROS 2.
           </>,
         ],
         images: [],
@@ -165,8 +195,8 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "Delhi Technological University",
-        description: <>B.Tech in Computer Science.</>,
+        name: "Delhi Technological University (DTU)",
+        description: <>B.Tech in Software Engineering, 2022 to 2026, Delhi, India.</>,
       },
     ],
   },
@@ -175,59 +205,28 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Robotics & AI",
-        description: (
-          <>
-            Autonomous navigation, Visual SLAM, and MAVLink-based fleet control on Edge AI hardware.
-          </>
-        ),
+        title: "Languages",
+        description: <>The languages I reach for day to day.</>,
         tags: [
-          {
-            name: "ROS 2",
-            icon: "ros",
-          },
-          {
-            name: "C++",
-            icon: "cplusplus",
-          },
-          {
-            name: "Python",
-            icon: "python",
-          },
-          {
-            name: "OpenCV",
-            icon: "opencv",
-          },
+          { name: "Python", icon: "python" },
+          { name: "JavaScript / TypeScript", icon: "javascript" },
+          { name: "Rust" },
+          { name: "Go" },
+          { name: "SQL" },
         ],
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Robotics Prototype",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Full Stack Development",
-        description: <>Building performant web applications and control interfaces.</>,
+        title: "Frontend",
+        description: <>Building performant web, desktop, and mobile interfaces.</>,
         tags: [
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "React",
-            icon: "react",
-          },
-          {
-            name: "FastAPI",
-            icon: "python",
-          },
-          {
-            name: "Docker",
-            icon: "docker",
-          },
+          { name: "React", icon: "react" },
+          { name: "Next.js", icon: "nextjs" },
+          { name: "React Native" },
+          { name: "TanStack" },
+          { name: "Zustand" },
+          { name: "Tauri 2" },
+          { name: "Tailwind CSS" },
         ],
         images: [
           {
@@ -239,14 +238,74 @@ const about: About = {
         ],
       },
       {
-        title: "Systems Programming",
+        title: "Backend",
+        description: <>Services, protocols, and the runtimes underneath them.</>,
+        tags: [
+          { name: "Node.js" },
+          { name: "FastAPI", icon: "python" },
+          { name: "Axum" },
+          { name: "Tokio" },
+          { name: "REST" },
+          { name: "WebSocket" },
+          { name: "WebRTC" },
+        ],
+        images: [],
+      },
+      {
+        title: "Data",
+        description: <>Storage and data layers across projects.</>,
+        tags: [
+          { name: "PostgreSQL" },
+          { name: "PostGIS" },
+          { name: "MongoDB" },
+          { name: "Cassandra" },
+          { name: "Redis" },
+          { name: "Firebase" },
+          { name: "Prisma" },
+          { name: "SQLite" },
+        ],
+        images: [],
+      },
+      {
+        title: "Cloud & Infrastructure",
+        description: <>Shipping, running, and operating everything above.</>,
+        tags: [
+          { name: "AWS" },
+          { name: "GCP" },
+          { name: "Docker", icon: "docker" },
+          { name: "Nginx" },
+          { name: "GitHub Actions" },
+        ],
+        images: [],
+      },
+      {
+        title: "Machine Learning & Robotics",
         description: (
           <>
-            Rust for the parts that have to be fast and correct: protocol layers, cryptography,
-            networking, and cross-platform binaries.
+            Autonomous navigation, Visual SLAM, and agentic AI on top of Edge AI hardware.
           </>
         ),
-        tags: [{ name: "Rust" }, { name: "Tauri" }, { name: "Tokio" }, { name: "WebAssembly" }],
+        tags: [
+          { name: "ROS", icon: "ros" },
+          { name: "Gazebo" },
+          { name: "PyTorch" },
+          { name: "OpenCV", icon: "opencv" },
+          { name: "LangGraph" },
+          { name: "LangChain" },
+        ],
+        images: [
+          {
+            src: "/images/projects/project-01/cover-02.jpg",
+            alt: "Robotics Prototype",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Blockchain",
+        description: <>Onchain programs on Solana.</>,
+        tags: [{ name: "Anchor" }, { name: "Solana" }],
         images: [],
       },
     ],
@@ -272,48 +331,9 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A collection of my prototypes and travels`,
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  // Images are managed from /admin/gallery and stored in the database now —
+  // this stays empty as the Gallery type's required fallback.
+  images: [],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };

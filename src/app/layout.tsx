@@ -6,6 +6,7 @@ import classNames from "classnames";
 
 import { Footer, Header, Providers, RouteGuard, ServiceWorkerRegistration } from "@/components";
 import { baseURL, dataStyle, effects, fonts, home, style } from "@/resources";
+import { getRoutes } from "@/utils/flags";
 import {
   Background,
   Column,
@@ -49,6 +50,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const resolvedRoutes = await getRoutes();
+
   return (
     <Flex
       suppressHydrationWarning
@@ -177,7 +180,7 @@ export default async function RootLayout({
           <Header />
           <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
-              <RouteGuard>{children}</RouteGuard>
+              <RouteGuard routes={resolvedRoutes}>{children}</RouteGuard>
             </Flex>
           </Flex>
           <Footer />

@@ -1,32 +1,29 @@
 import { notFound } from "next/navigation";
-import { getPosts } from "@/utils/utils";
+import { cookies } from "next/headers";
 import {
   Meta,
   Schema,
   AvatarGroup,
-  Button,
   Column,
-  Flex,
   Heading,
   Media,
   Text,
   SmartLink,
   Row,
-  Avatar,
   Line,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
+import { getPublishedContentBySlug } from "@/utils/content";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
+import { ViewCounter } from "@/components/blog/ViewCounter";
+import { LikeButton } from "@/components/blog/LikeButton";
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
+// Content is DB-backed and admin-editable — must render fresh per request so
+// publishing/editing a project shows up immediately, not just after a redeploy.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -38,10 +35,9 @@ export async function generateMetadata({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  let post = posts.find((post) => post.slug === slugPath);
-
-  if (!post) return {};
+  const result = await getPublishedContentBySlug("work", slugPath);
+  if (!result) return {};
+  const { item: post } = result;
 
   return Meta.generate({
     title: post.metadata.title,
@@ -62,15 +58,18 @@ export default async function Project({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
-
-  if (!post) {
+  const result = await getPublishedContentBySlug("work", slugPath);
+  if (!result) {
     notFound();
   }
+  const { item: post, views, likes } = result;
+
+  const cookieStore = await cookies();
+  const initiallyLiked = Boolean(cookieStore.get(`liked_work_${post.slug}`)?.value);
 
   const avatars =
-    post.metadata.team?.map((person) => ({
-      src: person.avatar,
+    post.metadata.team?.map((member) => ({
+      src: member.avatar,
     })) || [];
 
   return (
@@ -111,9 +110,9 @@ export default async function Project({
           </Text>
         )}
       </Column>
-      <Row marginBottom="32" horizontal="center">
+      <Row marginBottom="32" horizontal="center" gap="24" vertical="center">
         <Row gap="16" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
+          {post.metadata.team.length > 0 && <AvatarGroup reverse avatars={avatars} size="s" />}
           <Text variant="label-default-m" onBackground="brand-weak">
             {post.metadata.team?.map((member, idx) => (
               <span key={idx}>
@@ -127,6 +126,13 @@ export default async function Project({
             ))}
           </Text>
         </Row>
+        <ViewCounter kind="work" slug={post.slug} initialViews={views} />
+        <LikeButton
+          kind="work"
+          slug={post.slug}
+          initialLikes={likes}
+          initiallyLiked={initiallyLiked}
+        />
       </Row>
       {post.metadata.images.length > 0 && (
         <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />

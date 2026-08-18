@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, resume, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, resume, person, about, blog, work, gallery, social } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -44,6 +44,7 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const github = social.find((item) => item.name === "GitHub");
 
   return (
     <>
@@ -165,6 +166,23 @@ export const Header = () => {
                     />
                   </Row>
                 </>
+              )}
+              {github && (
+                // Anchor rather than ToggleButton's href: this should leave the site entirely
+                // and open GitHub in a new tab, not go through the client router.
+                <a
+                  href={github.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-decoration-none"
+                >
+                  <Row s={{ hide: true }}>
+                    <ToggleButton prefixIcon="github" label={github.name} selected={false} />
+                  </Row>
+                  <Row hide s={{ hide: false }}>
+                    <ToggleButton prefixIcon="github" selected={false} />
+                  </Row>
+                </a>
               )}
               {resume.display && (
                 // Anchor rather than ToggleButton's href: the PDF is a static file, so it must

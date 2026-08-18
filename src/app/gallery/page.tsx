@@ -2,6 +2,10 @@ import { Flex, Meta, Schema } from "@once-ui-system/core";
 import GalleryView from "@/components/gallery/GalleryView";
 import { baseURL, gallery, person } from "@/resources";
 
+// Images are DB-backed and admin-uploaded — must render fresh per request so a
+// new photo shows up immediately, not just after a redeploy.
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata() {
   return Meta.generate({
     title: gallery.title,

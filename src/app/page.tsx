@@ -11,10 +11,16 @@ import {
   Meta,
   Line,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
+import { home, about, person, baseURL } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { getHomeFeatured } from "@/utils/home-featured";
+import { getRoutes } from "@/utils/flags";
+
+// The featured badge and project list are DB-backed and admin-editable — must
+// render fresh per request so edits show up immediately, not just after a redeploy.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -26,7 +32,9 @@ export async function generateMetadata() {
   });
 }
 
-export default function Home() {
+export default async function Home() {
+  const [featured, routes] = await Promise.all([getHomeFeatured(), getRoutes()]);
+
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
@@ -44,7 +52,7 @@ export default function Home() {
       />
       <Column fillWidth horizontal="center" gap="m">
         <Column maxWidth="s" horizontal="center" align="center">
-          {home.featured.display && (
+          {featured.display && (
             <RevealFx
               fillWidth
               horizontal="center"
@@ -59,9 +67,19 @@ export default function Home() {
                 onBackground="neutral-strong"
                 textVariant="label-default-s"
                 arrow={false}
-                href={home.featured.href}
+                href={featured.href || undefined}
               >
-                <Row paddingY="2">{home.featured.title}</Row>
+                <Row paddingY="2" gap="12" vertical="center">
+                  <strong className="ml-4">{featured.label}</strong>
+                  {featured.description && (
+                    <>
+                      <Line background="brand-alpha-strong" vert height="20" />
+                      <Text marginRight="4" onBackground="brand-medium">
+                        {featured.description}
+                      </Text>
+                    </>
+                  )}
+                </Row>
               </Badge>
             </RevealFx>
           )}

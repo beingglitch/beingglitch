@@ -1,25 +1,30 @@
-import { getPosts } from "@/utils/utils";
-import { baseURL, routes as routesConfig } from "@/resources";
+import { getPublishedContent } from "@/utils/content";
+import { getRoutes } from "@/utils/flags";
+import { baseURL } from "@/resources";
 
 export default async function sitemap() {
-  const blogs = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
+  const [blogs, works, routesConfig] = await Promise.all([
+    getPublishedContent("blog"),
+    getPublishedContent("work"),
+    getRoutes(),
+  ]);
+
+  const blogUrls = blogs.map((post) => ({
     url: `${baseURL}/blog/${post.slug}`,
     lastModified: post.metadata.publishedAt,
   }));
 
-  const works = getPosts(["src", "app", "work", "projects"]).map((post) => ({
+  const workUrls = works.map((post) => ({
     url: `${baseURL}/work/${post.slug}`,
     lastModified: post.metadata.publishedAt,
   }));
 
-  const activeRoutes = Object.keys(routesConfig).filter(
-    (route) => routesConfig[route as keyof typeof routesConfig],
-  );
+  const activeRoutes = Object.keys(routesConfig).filter((route) => routesConfig[route]);
 
   const routes = activeRoutes.map((route) => ({
     url: `${baseURL}${route !== "/" ? route : ""}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));
 
-  return [...routes, ...blogs, ...works];
+  return [...routes, ...blogUrls, ...workUrls];
 }

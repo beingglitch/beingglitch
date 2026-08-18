@@ -2,15 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { routes, protectedRoutes } from "@/resources";
+import { protectedRoutes } from "@/resources";
 import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
 import NotFound from "@/app/not-found";
 
 interface RouteGuardProps {
   children: React.ReactNode;
+  routes: Record<string, boolean>;
 }
 
-const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
+const RouteGuard: React.FC<RouteGuardProps> = ({ children, routes }) => {
   const pathname = usePathname();
   const [isRouteEnabled, setIsRouteEnabled] = useState(false);
   const [isPasswordRequired, setIsPasswordRequired] = useState(false);
@@ -21,6 +22,10 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
   useEffect(() => {
     const performChecks = async () => {
+      if (pathname?.startsWith("/admin")) {
+        return;
+      }
+
       setLoading(true);
       setIsRouteEnabled(false);
       setIsPasswordRequired(false);
@@ -75,6 +80,13 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       setError("Incorrect password");
     }
   };
+
+  // /admin is never a member of `routes`/`protectedRoutes` — it has its own auth
+  // (middleware.ts + admin_session cookie), so it must not be swallowed by the
+  // public route-visibility/NotFound logic below.
+  if (pathname?.startsWith("/admin")) {
+    return <>{children}</>;
+  }
 
   if (loading) {
     return (

@@ -2,6 +2,10 @@ import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
+// Content is DB-backed and admin-editable — must render fresh per request so
+// publishing/editing a project shows up immediately, not just after a redeploy.
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata() {
   return Meta.generate({
     title: work.title,

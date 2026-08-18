@@ -27,6 +27,9 @@ export async function generateMetadata() {
   });
 }
 
+// Hides experience/skill images on the About page without dropping the data from content.tsx.
+const SHOW_ABOUT_IMAGES = false;
+
 export default function About() {
   const structure = [
     {
@@ -234,7 +237,7 @@ export default function About() {
                         ),
                       )}
                     </Column>
-                    {experience.images && experience.images.length > 0 && (
+                    {SHOW_ABOUT_IMAGES && experience.images && experience.images.length > 0 && (
                       <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
                           <Row
@@ -309,7 +312,7 @@ export default function About() {
                         ))}
                       </Row>
                     )}
-                    {skill.images && skill.images.length > 0 && (
+                    {SHOW_ABOUT_IMAGES && skill.images && skill.images.length > 0 && (
                       <Row fillWidth paddingTop="m" gap="12" wrap>
                         {skill.images.map((image, index) => (
                           <Row
