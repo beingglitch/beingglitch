@@ -10,3 +10,4 @@ export { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistratio
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
 export { TextWithBreaks } from "@/components/TextWithBreaks";
+export { GithubContributions } from "@/components/GithubContributions";

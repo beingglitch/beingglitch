@@ -12,7 +12,7 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL } from "@/resources";
-import { Mailchimp, TextWithBreaks } from "@/components";
+import { GithubContributions, Mailchimp, TextWithBreaks } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { getHomeFeatured } from "@/utils/home-featured";
@@ -123,9 +123,11 @@ export default async function Home() {
           </RevealFx>
         </Column>
       </Column>
-      {/* <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx> */}
+      {/* Continues the hero's reveal cascade (0 → 0.2 → 0.4) as the evidence for
+          the headline. Renders nothing when GITHUB_TOKEN is unset. */}
+      <RevealFx translateY="16" delay={0.6} fillWidth>
+        <GithubContributions />
+      </RevealFx>
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">

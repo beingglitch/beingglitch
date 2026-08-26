@@ -1,0 +1,78 @@
+.scroller {
+    overflow-x: auto;
+    // The grid stops shrinking before its labels become unreadable; below that
+    // width the card scrolls horizontally instead.
+    -webkit-overflow-scrolling: touch;
+}
+
+.grid {
+    display: block;
+    width: 100%;
+    min-width: 680px;
+    height: auto;
+}
+
+.label {
+    fill: var(--neutral-on-background-weak);
+    font-size: 11px;
+    font-family: inherit;
+}
+
+.cell {
+    fill: var(--neutral-alpha-weak);
+}
+
+// One hue, stepped by opacity. Mixing separate brand tokens gave a navy-to-cyan
+// jump with no usable middle; this keeps the ramp even in both themes.
+.level1,
+.level2,
+.level3,
+.level4 {
+    fill: var(--brand-background-strong);
+}
+
+.level1 {
+    fill-opacity: 0.3;
+}
+
+.level2 {
+    fill-opacity: 0.52;
+}
+
+.level3 {
+    fill-opacity: 0.76;
+}
+
+.level4 {
+    fill-opacity: 1;
+}
+
+.swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--neutral-alpha-weak);
+}
+
+.swatch1,
+.swatch2,
+.swatch3,
+.swatch4 {
+    background: var(--brand-background-strong);
+}
+
+.swatch1 {
+    opacity: 0.3;
+}
+
+.swatch2 {
+    opacity: 0.52;
+}
+
+.swatch3 {
+    opacity: 0.76;
+}
+
+.swatch4 {
+    opacity: 1;
+}
