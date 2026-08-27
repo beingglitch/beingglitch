@@ -6,7 +6,7 @@ const person: Person = {
   name: `Suraj Shukla`,
   role: "Full Stack & Robotics Engineer",
   avatar: "/images/avatar.jpg",
-  email: "surajshukla5604@gmail.com",
+  email: "suraj@surajshukla.io",
   location: "Asia/Kolkata", // Timezone
   languages: ["English", "Hindi"],
 };

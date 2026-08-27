@@ -48,4 +48,4 @@ secrets sync. Currently working on **fabricOS**.
 | **Caramel** | An Intelligent web extension that can develop and add features based on user demand directly in browser apps or sites | TypeScript |
 
 
-[surajshukla.vercel.app](https://surajshukla.vercel.app) · [LinkedIn](https://www.linkedin.com/in/surjshuk/) · [X](https://x.com/beingglitch) · [Email](mailto:surajshukla5604@gmail.com)
+[surajshukla.vercel.app](https://surajshukla.vercel.app) · [LinkedIn](https://www.linkedin.com/in/surjshuk/) · [X](https://x.com/beingglitch) · [Email](mailto:suraj@surajshukla.io)
